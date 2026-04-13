@@ -16,7 +16,6 @@
         </button>
 
         <nav class="menu" id="menu" aria-label="Navegacion principal">
-            <a href="#sobre-nosotros">Sobre Nosotros</a>
             <a href="#servicios">Planes / Servicios</a>
             <a href="#contacto">Contactanos</a>
         </nav>
