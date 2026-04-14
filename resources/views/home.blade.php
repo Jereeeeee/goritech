@@ -35,59 +35,102 @@
     </div>
 </section>
 
-<section id="sobre-nosotros" class="content-section">
-    <div class="container split-grid">
-        <div>
-            <p class="section-tag">Sobre Nosotros</p>
-            <h2>Somos informaticos con ambicion de crecer junto a nuestros clientes, para crecer juntos.</h2>
-        </div>
-        <p>
-            En GoriTech unimos vision, experiencia tecnica y compromiso humano. Nacimos para acompañar a cada cliente en su proceso de modernizacion con paginas web y soluciones tecnologicas, brindando siempre un servicio personalizado, cercano y profesional.
-        </p>
-    </div>
-</section>
-
-<section id="servicios" class="content-section section-surface">
+<section id="servicios" class="content-section section-clear">
     <div class="container">
         <p class="section-tag">Nuestros Planes / Servicios</p>
         <h2>Servicios pensados para cada etapa del camino digital.</h2>
 
         <div class="services-grid">
             <article class="service-card">
-                <h3>Plan Base</h3>
-                <p>Ideal para negocios que quieren comenzar su modernizacion con una web clara y profesional.</p>
+                <svg class="service-card-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M6 3h12a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M12 8v6M9 11h6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <h3>Landing Page</h3>
+                <p class="service-category">CAMPAÑAS & PUBLICIDAD</p>
+                <p class="service-price">Desde $250.000</p>
+                <p>Pensado para emprendedores que necesitan iniciar su presencia digital con una base profesional y ordenada.</p>
                 <ul>
-                    <li>Landing page de presentacion</li>
-                    <li>Estructura optimizada para buscadores</li>
-                    <li>Acompanamiento en publicacion</li>
+                    <li>Landing page de presentación con identidad de marca</li>
+                    <li>Diseño responsive para móvil y escritorio</li>
+                    <li>Configuración inicial y acompañamiento de salida</li>
                 </ul>
             </article>
 
             <article class="service-card featured">
+                <svg class="service-card-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M3 12h18M7 9v6m3-6v6m3-6v6m3-6v6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M21 7v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <h3>Sitio Corporativo</h3>
+                <p class="service-category">PYMES & SERVICIOS</p>
                 <p class="badge">Recomendado</p>
-                <h3>Plan Growth</h3>
-                <p>Para empresas que quieren crecer y conectar mejor con sus clientes en el entorno digital.</p>
+                <p class="service-price">Desde $350.000</p>
+                <p>Ideal para negocios en crecimiento que requieren una web sólida para vender mejor y generar confianza.</p>
                 <ul>
-                    <li>Sitio multi-seccion en Laravel</li>
-                    <li>Integraciones de contacto y gestion</li>
-                    <li>Analitica para tomar decisiones</li>
+                    <li>Sitio web multi-sección con enfoque comercial (Inicio, Nosotros, Servicios, Contacto).</li>
+                    <li>Genera confianza institucional y posicionamiento de marca.</li>
+                    <li>Autoadministrable: Podrás editar textos e imágenes tú mismo.</li>
                 </ul>
             </article>
 
             <article class="service-card">
-                <h3>Plan Scale</h3>
-                <p>Enfocado en negocios que buscan evolucion constante con tecnologia a medida.</p>
+                <svg class="service-card-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="2"/>
+                    <path d="M12 6v2m0 8v2M6 12H4m8 0h2M8.2 8.2l1.4 1.4m5.2 5.2l1.4 1.4M8.2 15.8l1.4-1.4m5.2-5.2l1.4-1.4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <h3>Tienda Online</h3>
+                <p class="service-category">VENTAS AUTOMÁTICAS</p>
+                <p class="service-price">Desde $450.000</p>
+                <p>Orientado a empresas que quieren escalar con soluciones tecnológicas personalizadas y evolución continua.</p>
                 <ul>
-                    <li>Desarrollo de modulos personalizados</li>
-                    <li>Optimizacion de rendimiento</li>
-                    <li>Soporte evolutivo continuo</li>
+                    <li>Catálogo de productos con carrito de compras y gestión de stock.</li>
+                    <li>Pagos en línea integrados (Webpay, MercadoPago) y cálculo de envíos.</li>
+                    <li>Tu sucursal digital abierta 24/7 vendiendo en automático.</li>
                 </ul>
             </article>
         </div>
     </div>
 </section>
 
-<section id="contacto" class="content-section">
+<div class="section-divider" aria-hidden="true">
+    <span></span>
+</div>
+
+<section id="por-que-somos-mejores" class="content-section section-gray better-section">
+    <div class="container">
+        <p class="section-tag">Por Que Somos Mejores</p>
+        <h2>Trabajo profesional, a medida y pensado para tu negocio.</h2>
+
+        <div class="comparison-grid">
+            <article class="comparison-card better">
+                <h3>Como trabaja GoriTech</h3>
+                <ul>
+                    <li>Analizamos tu negocio y diseniamos una solucion personalizada.</li>
+                    <li>Cada pagina y modulo se desarrolla a medida de tus objetivos.</li>
+                    <li>Arquitectura profesional, escalable y preparada para crecer.</li>
+                    <li>Acompanamiento cercano durante y despues de la entrega.</li>
+                </ul>
+            </article>
+
+            <article class="comparison-card standard">
+                <h3>Servicios basados en plantillas</h3>
+                <ul>
+                    <li>Diseños genericos que no reflejan la identidad de tu marca.</li>
+                    <li>Limitaciones al momento de agregar nuevas funciones.</li>
+                    <li>Menor flexibilidad para adaptar procesos reales del negocio.</li>
+                    <li>Resultados poco diferenciales frente a la competencia.</li>
+                </ul>
+            </article>
+        </div>
+    </div>
+</section>
+
+<div class="section-divider" aria-hidden="true">
+    <span></span>
+</div>
+
+<section id="contacto" class="content-section section-clear">
     <div class="container contact-shell">
         <div>
             <p class="section-tag">Contactanos</p>

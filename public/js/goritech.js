@@ -40,3 +40,23 @@ if (sectionLinks.length && sections.length) {
 
     sections.forEach((section) => observer.observe(section));
 }
+
+const authShell = document.querySelector("[data-auth-shell]");
+
+if (authShell) {
+    const authButtons = authShell.querySelectorAll("[data-auth-switch]");
+    const syncAuthMode = (mode) => {
+        authShell.classList.toggle("register-mode", mode === "register");
+        authShell.classList.toggle("login-mode", mode !== "register");
+
+        authButtons.forEach((button) => {
+            button.classList.toggle("active", button.dataset.authSwitch === mode);
+        });
+    };
+
+    authButtons.forEach((button) => {
+        button.addEventListener("click", () => syncAuthMode(button.dataset.authSwitch || "login"));
+    });
+
+    syncAuthMode(authShell.dataset.authMode || "login");
+}

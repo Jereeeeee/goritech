@@ -1,6 +1,9 @@
 <header class="site-header">
+    @php
+        $isHome = request()->path() === '/';
+    @endphp
     <div class="container nav-shell">
-        <a class="brand" href="#inicio" aria-label="Ir al inicio">
+        <a class="brand" href="{{ $isHome ? '#inicio' : url('/') }}" aria-label="Ir al inicio">
             @if (file_exists(public_path('images/monotech.png')))
                 <img class="brand-logo" src="{{ asset('images/monotech.png') }}" alt="Logo GoriTech">
             @else
@@ -16,8 +19,14 @@
         </button>
 
         <nav class="menu" id="menu" aria-label="Navegacion principal">
-            <a href="#servicios">Planes / Servicios</a>
-            <a href="#contacto">Contactanos</a>
+            <a href="{{ $isHome ? '#servicios' : url('/#servicios') }}">Planes / Servicios</a>
+            <a href="{{ $isHome ? '#contacto' : url('/#contacto') }}">Contactanos</a>
+            @guest
+                <a class="menu-cta" href="{{ route('auth.show') }}">Iniciar sesion</a>
+            @endguest
+            @auth
+                <a class="menu-cta" href="{{ route('auth.show') }}">CUENTA</a>
+            @endauth
         </nav>
     </div>
 </header>
