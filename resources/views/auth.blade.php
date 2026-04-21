@@ -21,6 +21,10 @@
                         <p>{{ auth()->user()->email }}</p>
                     </article>
                     <article class="auth-profile-item">
+                        <h3>Telefono</h3>
+                        <p>{{ auth()->user()->telefono ?? 'No registrado' }}</p>
+                    </article>
+                    <article class="auth-profile-item">
                         <h3>Miembro desde</h3>
                         <p>{{ optional(auth()->user()->created_at)->format('d/m/Y') }}</p>
                     </article>
@@ -74,6 +78,9 @@
                     <div class="auth-flash auth-flash-error">{{ $message }}</div>
                 @enderror
                 @error('name')
+                    <div class="auth-flash auth-flash-error">{{ $message }}</div>
+                @enderror
+                @error('telefono')
                     <div class="auth-flash auth-flash-error">{{ $message }}</div>
                 @enderror
             </div>
@@ -133,6 +140,9 @@
 
                         <label for="register-email">Correo</label>
                         <input id="register-email" name="email" type="email" value="{{ old('email') }}" placeholder="tu@email.com" required>
+
+                        <label for="register-telefono">Telefono</label>
+                        <input id="register-telefono" name="telefono" type="tel" value="{{ old('telefono') }}" placeholder="56912345678" inputmode="numeric" pattern="[0-9]{8,15}" maxlength="15" required>
 
                         <label for="register-password">Contraseña</label>
                         <input id="register-password" name="password" type="password" placeholder="Crea una contraseña" required>

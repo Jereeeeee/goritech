@@ -50,10 +50,12 @@ class AuthController extends Controller
         $validator = Validator::make($request->all(), [
             'name' => ['required', 'string', 'max:255', 'regex:/^[\pL\s]+$/u'],
             'email' => ['required', 'email', 'max:255', 'unique:users,email'],
+            'telefono' => ['required', 'digits_between:8,15'],
             'password' => ['required', 'confirmed', Password::min(8)],
         ], [
             'name.regex' => 'El nombre solo puede contener letras y espacios.',
             'email.unique' => 'Este correo ya está registrado en nuestra base de datos.',
+            'telefono.digits_between' => 'Ingresa solo numeros (entre 8 y 15 digitos).',
             'password.confirmed' => 'Sus contraseñas tienen que coincidir.',
             'password.min' => 'La contraseña debe tener al menos 8 caracteres.',
         ]);
@@ -61,7 +63,7 @@ class AuthController extends Controller
         if ($validator->fails()) {
             return back()
                 ->withErrors($validator)
-                ->withInput($request->only('name', 'email'))
+                ->withInput($request->only('name', 'email', 'telefono'))
                 ->with('authMode', 'register');
         }
 
@@ -70,7 +72,9 @@ class AuthController extends Controller
         $user = User::query()->create([
             'name' => $data['name'],
             'email' => $data['email'],
+            'telefono' => $data['telefono'],
             'password' => Hash::make($data['password']),
+            'id_rol' => 2,
         ]);
 
         Auth::login($user);

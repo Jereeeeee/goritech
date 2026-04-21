@@ -92,13 +92,13 @@
             ],
         ],
         [
-            'id' => 'diseno',
-            'label' => 'Diseno',
+            'id' => 'diseño',
+            'label' => 'diseño',
             'description' => 'Nivel visual y experiencia de uso de la interfaz.',
             'items' => [
                 [
-                    'id' => 'diseno-base',
-                    'name' => 'Diseno base (plantilla)',
+                    'id' => 'diseño-base',
+                    'name' => 'diseño base (plantilla)',
                     'description' => 'Plantilla adaptable para acelerar salida inicial.',
                     'min' => 0,
                     'max' => 50000,
@@ -106,8 +106,8 @@
                     'reason' => 'Aumenta segun nivel de ajuste sobre plantilla preexistente.',
                 ],
                 [
-                    'id' => 'diseno-personalizado',
-                    'name' => 'Diseno personalizado',
+                    'id' => 'diseño-personalizado',
+                    'name' => 'diseño personalizado',
                     'description' => 'Interfaz hecha a medida en base a identidad de marca.',
                     'min' => 100000,
                     'max' => 400000,
@@ -116,7 +116,7 @@
                 ],
                 [
                     'id' => 'responsive',
-                    'name' => 'Diseno responsive (movil y tablet)',
+                    'name' => 'diseño responsive (movil y tablet)',
                     'description' => 'Adaptacion completa para pantallas pequenas y medianas.',
                     'min' => 50000,
                     'max' => 150000,
@@ -263,6 +263,16 @@
         <h1>Arma tu sitio por funcionalidades y calcula un rango realista de inversion.</h1>
         <p class="quote-intro">Valores referenciales basados en mercado chileno. Selecciona modulos y revisa minimo, maximo y promedio sugerido.</p>
 
+        @if (session('quote_status'))
+            <div class="quote-alert quote-alert-success">{{ session('quote_status') }}</div>
+        @endif
+        @if (session('quote_error'))
+            <div class="quote-alert quote-alert-error">{{ session('quote_error') }}</div>
+        @endif
+        @error('comentario')
+            <div class="quote-alert quote-alert-error">{{ $message }}</div>
+        @enderror
+
         <div class="quote-help" aria-label="Guia de uso del cotizador">
             <h2>Como usar este cotizador</h2>
             <ol>
@@ -329,13 +339,6 @@
                 <h2>Resumen de cotizacion</h2>
                 <p class="quote-summary-note">Seleccionadas: <strong data-quote-selected-count>0</strong> funcionalidades.</p>
 
-                <div class="quote-legend" aria-label="Significado de precios y complejidad">
-                    <p><strong>Minimo:</strong> valor base del mercado para implementar lo esencial.</p>
-                    <p><strong>Maximo:</strong> valor para una version mas completa o compleja.</p>
-                    <p><strong>Promedio sugerido:</strong> referencia practica para planificar presupuesto.</p>
-                    <p><strong>Complejidad:</strong> Basico, Medio o Avanzado segun dificultad tecnica.</p>
-                </div>
-
                 <div class="quote-summary-list" data-quote-summary-list>
                     <p class="quote-empty">Aun no seleccionas funcionalidades.</p>
                 </div>
@@ -362,8 +365,37 @@
                     </ul>
                 </div>
 
-                <button type="button" class="btn btn-primary" data-quote-send disabled>Enviar cotizacion (proximamente)</button>
+                <form action="{{ route('cotiza.store') }}" method="post" data-quote-form>
+                    @csrf
+                    <input type="hidden" name="total_min" value="0" data-quote-payload-min>
+                    <input type="hidden" name="total_max" value="0" data-quote-payload-max>
+                    <input type="hidden" name="total_avg" value="0" data-quote-payload-avg>
+                    <input type="hidden" name="items" value="[]" data-quote-payload-items>
+                    <input type="hidden" name="factores" value="[]" data-quote-payload-factors>
+
+                    <label for="quote-comentario" class="quote-comment-label">Comentario sobre tu proyecto (opcional)</label>
+                    <textarea id="quote-comentario" name="comentario" rows="4" class="quote-comment-input" placeholder="Ejemplo: Necesito tener la web lista antes de fin de mes y conectar formulario con mi correo.">{{ old('comentario') }}</textarea>
+
+                    <button type="submit" class="btn btn-primary" data-quote-send disabled>Enviar cotizacion</button>
+                </form>
             </aside>
+        </div>
+
+        <div class="quote-success-modal {{ session('quote_open_modal') ? 'open' : '' }}" data-quote-success-modal aria-hidden="{{ session('quote_open_modal') ? 'false' : 'true' }}" role="dialog" aria-modal="true" aria-labelledby="quote-success-title">
+            <div class="quote-success-backdrop" data-quote-success-close></div>
+            <div class="quote-success-panel">
+                <div class="quote-success-head">
+                    <h2 id="quote-success-title">Cotizacion enviada</h2>
+                    <button type="button" class="quote-success-close" data-quote-success-close aria-label="Cerrar">×</button>
+                </div>
+
+                <p class="quote-success-main">{{ session('quote_status') ?? 'Tu cotizacion fue enviada correctamente.' }}</p>
+                <p class="quote-success-detail">{{ session('quote_confirmation_message') ?? 'Te enviaremos un mensaje por telefono o correo para confirmar tu proyecto.' }}</p>
+
+                <div class="quote-success-actions">
+                    <button type="button" class="btn btn-primary" data-quote-success-close>Entendido</button>
+                </div>
+            </div>
         </div>
     </div>
 </section>

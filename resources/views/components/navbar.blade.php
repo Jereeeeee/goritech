@@ -23,6 +23,9 @@
             <a href="{{ $isHome ? '#contacto' : url('/#contacto') }}">Contactanos</a>
             @auth
                 <a class="menu-quote" href="{{ route('cotiza.index') }}">Cotiza tu pagina</a>
+                @if (auth()->user()->isAdmin())
+                    <a class="menu-quote" href="{{ route('admin.index') }}">Administracion</a>
+                @endif
             @endauth
 
             @guest
