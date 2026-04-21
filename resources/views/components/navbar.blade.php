@@ -21,6 +21,13 @@
         <nav class="menu" id="menu" aria-label="Navegacion principal">
             <a href="{{ $isHome ? '#servicios' : url('/#servicios') }}">Planes / Servicios</a>
             <a href="{{ $isHome ? '#contacto' : url('/#contacto') }}">Contactanos</a>
+            @auth
+                <a class="menu-quote" href="{{ route('cotiza.index') }}">Cotiza tu pagina</a>
+            @endauth
+
+            @guest
+                <a class="menu-quote" href="{{ route('auth.show', ['mode' => 'login']) }}">Cotiza tu pagina</a>
+            @endguest
             @guest
                 <a class="menu-cta" href="{{ route('auth.show') }}">Iniciar sesion</a>
             @endguest

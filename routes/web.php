@@ -7,6 +7,8 @@ Route::get('/', function () {
     return view('home');
 });
 
+Route::view('/cotiza', 'cotiza')->middleware('auth')->name('cotiza.index');
+
 Route::get('/auth', [AuthController::class, 'show'])->name('auth.show');
 Route::post('/auth/login', [AuthController::class, 'login'])->name('auth.login');
 Route::post('/auth/register', [AuthController::class, 'register'])->name('auth.register');
